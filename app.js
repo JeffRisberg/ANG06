@@ -13,19 +13,19 @@ var myApp = angular.module('products', ['ui.router'])
             name: 'red',
             url: '/red',
             parent: home,
-            templateUrl: 'content.red.html'
+            templateUrl: 'views/red.html'
         };
         var blue = {
             name: 'blue',
             url: '/blue',
             parent: home,
-            templateUrl: 'content.blue.html'
+            templateUrl: 'views/blue.html'
         };
         var green = {
             name: 'green',
             url: '/green',
             parent: home,
-            templateUrl: 'content.green.html'
+            templateUrl: 'view/green.html'
         };
 
         $stateProvider.state(home);
