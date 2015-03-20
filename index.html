@@ -21,7 +21,11 @@
     </style>
 </head>
 <body>
-<div id="logo"></div>
+
+<!-- BEGIN HEADER -->
+<div ng-include="'tpl/header.html'" ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+</div>
+<!-- END HEADER -->
 
 <div class="container">
     <div ui-view></div>
@@ -42,5 +46,11 @@
         </div>
     </script>
 </div>
+
+<!-- BEGIN FOOTER -->
+<div ng-include="'tpl/footer.html'" class="page-footer">
+</div>
+<!-- END FOOTER -->
+
 </body>
 </html>
