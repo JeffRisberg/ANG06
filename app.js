@@ -25,7 +25,7 @@ var myApp = angular.module('products', ['ui.router'])
             name: 'green',
             url: '/green',
             parent: home,
-            templateUrl: 'view/green.html'
+            templateUrl: 'views/green.html'
         };
 
         $stateProvider.state(home);
@@ -35,13 +35,4 @@ var myApp = angular.module('products', ['ui.router'])
     }])
     .run(['$state', function ($state) {
         $state.transitionTo('home');
-    }])
-
-    .controller('SidebarCtrl', function ($scope, $state) {
-
-        $scope.content = ['red', 'green', 'blue'];
-
-        $scope.setPage = function (page) {
-            $state.transitionTo(page);
-        };
-    });
+    }]);

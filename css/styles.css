@@ -11,6 +11,15 @@ body {
     height: 48px;
 }
 
+.page-header {
+    margin: 0 0 0 0;
+}
+
+.page-footer {
+    background: #ddd;
+    padding: 5px;
+}
+
 .red {
     background: red;
 }
