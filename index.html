@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="products">
+<head>
+    <title>Home Page</title>
+    <meta charset=utf-8/>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="angularjs/angular.js"></script>
+    <script src="angularjs/plugins/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script src="services.js"></script>
+
+    <style>
+        .search {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="logo"></div>
+
+<div class="container">
+    <div ui-view></div>
+
+    <!-- Below are the templates that get cached since we can't have external templates with JSFiddle -->
+
+    <!-- CACHE FILE: list.html -->
+    <script type="text/ng-template" id="content.html">
+        <div class="row">
+             <h3>This is the header</h3>
+        </div>
+        <div class="row">
+            <div class="small-4 columns" ng-controller="SidebarCtrl">
+                <ul>
+                    <li ng-repeat="page in content"> <a ng-click="setPage(page)">goto {{page}}</a></li>
+                </ul>
+            </div>
+            <div class="small-8 columns content">
+                <div ui-view></div>
+            </div>
+        </div>
+    </script>
+    <!-- CACHE FILE: list.html -->
+    <script type="text/ng-template" id="content.red.html">
+        <div class="row red">
+             red
+        </div>
+    </script>
+    <!-- CACHE FILE: list.html -->
+    <script type="text/ng-template" id="content.blue.html">
+        <div class="row blue">
+             blue
+        </div>
+    </script>
+    <!-- CACHE FILE: list.html -->
+    <script type="text/ng-template" id="content.green.html">
+        <div class="row green">
+             green
+        </div>
+    </script>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F7DB;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #091350;
+}
+
+#logo {
+    background: url('../img/ang06_logo.png') #93B3F7 no-repeat;
+    height: 48px;
+}
