@@ -10,6 +10,7 @@
 
     <script src="angularjs/angular.js"></script>
     <script src="angularjs/plugins/angular-ui-router.min.js"></script>
+    <script src="angularjs/plugins/ui-bootstrap-tpls-0.12.1.js"></script>
     <script src="app.js"></script>
     <script src="controllers.js"></script>
     <script src="services.js"></script>
@@ -23,7 +24,7 @@
 <body>
 
 <!-- BEGIN HEADER -->
-<div ng-include="'tpl/header.html'" ng-controller="HeaderController" class="page-header">
+<div ng-include="'partials/header.html'" ng-controller="HeaderController" class="page-header">
 </div>
 <!-- END HEADER -->
 
@@ -32,12 +33,12 @@
 
     <script type="text/ng-template" id="content.html">
         <div class="row">
-             <h3>This is the header</h3>
+            <h3>Examples of using Angular's Bootstrap Plugin</h3>
         </div>
         <div class="row">
             <div class="col-md-4" ng-controller="SidebarCtrl">
                 <ul>
-                    <li ng-repeat="page in content"> <a ng-click="setPage(page)">Go to {{page}}</a></li>
+                    <li ng-repeat="page in content"><a ng-click="setPage(page)">Go to {{page}}</a></li>
                 </ul>
             </div>
             <div class="col-md-8">
@@ -48,7 +49,7 @@
 </div>
 
 <!-- BEGIN FOOTER -->
-<div ng-include="'tpl/footer.html'" class="page-footer">
+<div ng-include="'partials/footer.html'" class="page-footer">
 </div>
 <!-- END FOOTER -->
 

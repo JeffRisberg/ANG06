@@ -2,36 +2,36 @@
  * Application is called 'products'
  */
 
-var myApp = angular.module('products', ['ui.router'])
+var myApp = angular.module('products', ['ui.router','ui.bootstrap'])
     .config(['$stateProvider', function ($stateProvider) {
         var home = {
             name: 'home',
             url: '/',
             templateUrl: 'content.html'
         };
-        var red = {
-            name: 'red',
-            url: '/red',
+        var buttons = {
+            name: 'buttons',
+            url: '/buttons',
             parent: home,
-            templateUrl: 'views/red.html'
+            templateUrl: 'templates/buttons.html'
         };
-        var blue = {
-            name: 'blue',
-            url: '/blue',
+        var tabs = {
+            name: 'tabs',
+            url: '/tabs',
             parent: home,
-            templateUrl: 'views/blue.html'
+            templateUrl: 'templates/tabs.html'
         };
-        var green = {
-            name: 'green',
-            url: '/green',
+        var accordion = {
+            name: 'accordion',
+            url: '/accordion',
             parent: home,
-            templateUrl: 'views/green.html'
+            templateUrl: 'templates/accordion.html'
         };
 
         $stateProvider.state(home);
-        $stateProvider.state(red);
-        $stateProvider.state(green);
-        $stateProvider.state(blue);
+        $stateProvider.state(buttons);
+        $stateProvider.state(tabs);
+        $stateProvider.state(accordion);
     }])
     .run(['$state', function ($state) {
         $state.transitionTo('home');
