@@ -20,14 +20,6 @@ body {
     padding: 5px;
 }
 
-.red {
-    background: red;
-}
-
-.green {
-    background: green;
-}
-
-.blue {
-    background: blue;
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
 }
