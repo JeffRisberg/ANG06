@@ -1,10 +1,10 @@
 {
-    "name": "ANG05",
+    "name": "ANG06",
     "version": "0.0.1",
     "main": "web-server.js",
     "repository": {
         "type": "git",
-        "url": "git://github.com/JeffRisberg/ANG05.git"
+        "url": "git://github.com/JeffRisberg/ANG06.git"
     },
     "dependencies": {
         "express": "~4.12.0",
