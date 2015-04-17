@@ -1,27 +1,63 @@
 /**
- * Created by Sandeep on 01/06/14.
+ * Application is called 'movieApp'
  */
 
-angular.module('movieApp',['ui.router','ngResource','movieApp.controllers','movieApp.services']);
+var myApp = angular.module('movieApp', ['ngResource', 'ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services']);
 
-angular.module('movieApp').config(function($stateProvider,$httpProvider){
-    $stateProvider.state('movies',{
-        url:'/movies',
-        templateUrl:'partials/movies.html',
-        controller:'MovieListController'
-    }).state('viewMovie',{
-       url:'/movies/:id/view',
-       templateUrl:'partials/movie-view.html',
-       controller:'MovieViewController'
-    }).state('newMovie',{
-        url:'/movies/new',
-        templateUrl:'partials/movie-add.html',
-        controller:'MovieCreateController'
-    }).state('editMovie',{
-        url:'/movies/:id/edit',
-        templateUrl:'partials/movie-edit.html',
-        controller:'MovieEditController'
-    });
-}).run(function($state){
-   $state.go('movies');
-});
+myApp.config(['$stateProvider', function ($stateProvider) {
+
+    var movies = {
+        name: 'movies',
+        url: '/',
+        templateUrl: 'templates/movies.html',
+        controller: 'MovieListController'
+    };
+    var viewMovie = {
+        name: 'viewMovie',
+        url: 'movies/:id/view',
+        templateURL: 'templates/movie-view.html',
+        controller: 'MovieViewController'
+    };
+    var newMovie = {
+        name: 'newMovie',
+        url: 'movies/new',
+        templateUrl: 'templates/movie-add.html',
+        controller: 'MovieCreateController'
+    };
+    var editMovie = {
+        name: 'editMovie',
+        url: 'movies/:id/edit',
+        templateUrl: 'templates/movie-edit.html',
+        controller: 'MovieEditController'
+    };
+    var buttons = {
+        name: 'buttons',
+        url: '/buttons',
+        parent: movies,
+        templateUrl: 'templates/buttons.html'
+    };
+    var tabs = {
+        name: 'tabs',
+        url: '/tabs',
+        parent: movies,
+        templateUrl: 'templates/tabs.html'
+    };
+    var accordion = {
+        name: 'accordion',
+        url: '/accordion',
+        parent: movies,
+        templateUrl: 'templates/accordion.html'
+    };
+
+    $stateProvider.state(movies);
+    $stateProvider.state(viewMovie);
+    $stateProvider.state(newMovie);
+    $stateProvider.state(editMovie);
+
+    $stateProvider.state(buttons);
+    $stateProvider.state(tabs);
+    $stateProvider.state(accordion);
+}])
+    .run(['$state', function ($state) {
+        $state.transitionTo('movies');
+    }]);
