@@ -4,7 +4,7 @@
 
 var myApp = angular.module('movieApp', ['ngResource', 'ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services']);
 
-myApp.config(['$stateProvider', function ($stateProvider) {
+myApp.config(['$stateProvider', '$httpProvider', function ($stateProvider, $httpProvider) {
 
     var movies = {
         name: 'movies',
@@ -15,7 +15,7 @@ myApp.config(['$stateProvider', function ($stateProvider) {
     var viewMovie = {
         name: 'viewMovie',
         url: 'movies/:id/view',
-        templateURL: 'templates/movie-view.html',
+        templateUrl: 'templates/movie-view.html',
         controller: 'MovieViewController'
     };
     var newMovie = {
@@ -30,6 +30,7 @@ myApp.config(['$stateProvider', function ($stateProvider) {
         templateUrl: 'templates/movie-edit.html',
         controller: 'MovieEditController'
     };
+    /*
     var buttons = {
         name: 'buttons',
         url: '/buttons',
@@ -48,15 +49,16 @@ myApp.config(['$stateProvider', function ($stateProvider) {
         parent: movies,
         templateUrl: 'templates/accordion.html'
     };
+    */
 
     $stateProvider.state(movies);
     $stateProvider.state(viewMovie);
     $stateProvider.state(newMovie);
     $stateProvider.state(editMovie);
 
-    $stateProvider.state(buttons);
-    $stateProvider.state(tabs);
-    $stateProvider.state(accordion);
+    //$stateProvider.state(buttons);
+    //$stateProvider.state(tabs);
+    //$stateProvider.state(accordion);
 }])
     .run(['$state', function ($state) {
         $state.transitionTo('movies');
