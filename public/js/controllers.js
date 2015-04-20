@@ -1,45 +1,42 @@
-/**
- * Created by Sandeep on 01/06/14.
- */
-angular.module('movieApp.controllers', [])
+angular.module('gameApp.controllers', [])
 
-    .controller('MovieListController', function ($scope, $state, popupService, $window, Movie) {
-        $scope.movies = Movie.query();
+    .controller('GameListController', function ($scope, $state, popupService, $window, Game) {
+        $scope.games = Game.query();
 
-        $scope.deleteMovie = function (movie) {
+        $scope.deleteGame = function (game) {
             if (popupService.showPopup('Really delete this?')) {
-                movie.$delete(function () {
+                game.$delete(function () {
                     $window.location.href = '';
                 });
             }
         }
     })
 
-    .controller('MovieViewController', function ($scope, $stateParams, Movie) {
-        $scope.movie = Movie.get({id: $stateParams.id});
+    .controller('GameViewController', function ($scope, $stateParams, Game) {
+        $scope.game = Game.get({id: $stateParams.id});
     })
 
-    .controller('MovieCreateController', function ($scope, $state, $stateParams, Movie) {
-        $scope.movie = new Movie();
+    .controller('GameCreateController', function ($scope, $state, $stateParams, Game) {
+        $scope.game = new Game();
 
-        $scope.addMovie = function () {
-            $scope.movie.$save(function () {
-                $state.go('movies');
+        $scope.addGame = function () {
+            $scope.game.$save(function () {
+                $state.go('games');
             });
         }
     })
-    .controller('MovieEditController', function ($scope, $state, $stateParams, Movie) {
-        $scope.updateMovie = function () {
-            $scope.movie.$update(function () {
-                $state.go('movies');
+    .controller('GameEditController', function ($scope, $state, $stateParams, Game) {
+        $scope.updateGame = function () {
+            $scope.game.$update(function () {
+                $state.go('games');
             });
         };
 
-        $scope.loadMovie = function () {
-            $scope.movie = Movie.get({id: $stateParams.id});
+        $scope.loadGame = function () {
+            $scope.game = Game.get({id: $stateParams.id});
         };
 
-        $scope.loadMovie();
+        $scope.loadGame();
     });
 
 

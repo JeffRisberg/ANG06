@@ -1,7 +1,7 @@
-angular.module('movieApp.services', [])
+angular.module('gameApp.services', [])
 
-    .factory('Movie', function ($resource) {
-        return $resource('api/movies/:id', {id: '@_id'}, {
+    .factory('Game', function ($resource) {
+        return $resource('api/games/:id', {id: '@id'}, {
             update: {
                 method: 'PUT'
             }
