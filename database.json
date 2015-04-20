@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "driver": "mysql",
+        "database": "sp05",
+        "user": "developer",
+        "password": "123456"
+    },
+
+    "production": {
+        "driver": "mysql",
+        "database": "sp05",
+        "user": "developer",
+        "password": "123456"
+    }
+}
