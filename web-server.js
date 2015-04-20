@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
-var connection = require('./connection/main');
-
 var game = require('./routes/game');
+var episode = require('./routes/episode');
 
 app.use('/api', game);
+app.use('/api', episode);
 
 app.listen(port);
 console.log('Now serving the app at http://localhost:' + port + '/');

@@ -1,4 +1,7 @@
+var connection = require('../connection/main');
+
 var DataTypes = require("sequelize");
+var express = require('express');
 
 var Game = connection.define('game', {
     name: DataTypes.STRING
