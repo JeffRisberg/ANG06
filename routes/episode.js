@@ -15,13 +15,13 @@ var Episode = connection.define('episode', {
             connection.query("select * from episode left join game on game.id = episode.game_id").then(onSuccess);
         },
         retrieveAll: function (onSuccess, onError) {
-            Episode.findAll({}, {raw: true}).then(onSuccess).catch(onError);
+            Episode.findAll({}, {raw: false}).then(onSuccess).catch(onError);
         },
         retrieveJoinById: function (episodeId, onSuccess, onError) {
             connection.query("select * from episode left join game on game.id = episode.game_id where episode.id = " + episodeId).then(onSuccess);
         },
         retrieveById: function (episodeId, onSuccess, onError) {
-            Episode.find({where: {id: episodeId}}, {raw: true}).then(onSuccess).catch(onError);
+            Episode.find({where: {id: episodeId}}, {raw: false}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var title = this.title;
@@ -88,7 +88,6 @@ router.route('/episodes/:episode_id')
         episode.title = req.body.title; //bodyParser does the magic
 
         episode.updateById(req.params.episode_id, function (success) {
-            console.log(success);
             if (success) {
                 res.json({ message: 'Episode updated!' });
             } else {

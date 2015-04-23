@@ -11,10 +11,10 @@ var Game = connection.define('game', {
     freezeTableName: true,
     instanceMethods: {
         retrieveAll: function (onSuccess, onError) {
-            Game.findAll({}, {raw: true}).then(onSuccess).catch(onError);
+            Game.findAll({}, {raw: false}).then(onSuccess).catch(onError);
         },
         retrieveById: function (gameId, onSuccess, onError) {
-            Game.find({where: {id: gameId}}, {raw: true}).then(onSuccess).catch(onError);
+            Game.find({where: {id: gameId}}, {raw: false}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var name = this.name;
@@ -88,7 +88,6 @@ router.route('/games/:game_id')
         game.download_price = req.body.download_price;
 
         game.updateById(req.params.game_id, function (success) {
-            console.log(success);
             if (success) {
                 res.json({ message: 'Game updated!' });
             } else {
