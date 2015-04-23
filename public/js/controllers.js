@@ -21,7 +21,7 @@ angular.module('gameApp.controllers', [])
 
         $scope.addGame = function () {
             $scope.game.$save(function () {
-                $state.go('games');
+                $state.go('games.list');
             });
         }
     })
@@ -29,7 +29,7 @@ angular.module('gameApp.controllers', [])
     .controller('GameEditController', function ($scope, $state, $stateParams, Game) {
         $scope.updateGame = function () {
             $scope.game.$update(function () {
-                $state.go('games');
+                $state.go('games.list');
             });
         };
 
@@ -42,7 +42,6 @@ angular.module('gameApp.controllers', [])
 
     .controller('EpisodeListController', function ($scope, $state, popupService, $window, Episode) {
         $scope.episodes = Episode.query();
-        console.log($scope.episodes);
 
         $scope.deleteEpisode = function (episode) {
             if (popupService.showPopup('Really delete this?')) {
@@ -60,7 +59,7 @@ angular.module('gameApp.controllers', [])
     .controller('EpisodeEditController', function ($scope, $state, $stateParams, Episode) {
         $scope.updateEpisode = function () {
             $scope.episode.$update(function () {
-                $state.go('episodes');
+                $state.go('episodes.list');
             });
         };
 
@@ -76,7 +75,7 @@ angular.module('gameApp.controllers', [])
 
         $scope.addEpisode = function () {
             $scope.episode.$save(function () {
-                $state.go('episodes');
+                $state.go('episodes.list');
             });
         }
     })
