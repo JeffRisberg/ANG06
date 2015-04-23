@@ -1,0 +1,23 @@
+<div>
+    <a ui-sref="episodes.new" class="btn btn-primary nodecoration">Add New Objective</a>
+</div>
+
+<p></p>
+
+<table class="table objectivetable">
+    <tr>
+        <th>Episode Name</th>
+        <th>Name</th>
+        <th>Date Created</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr ng-repeat="objective in objectives">
+        <td>{{objective.title}}</td>
+        <td>{{objective.name}}</td>
+        <td>{{objective.date_created}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="objectives.view({id: objective.id})">View</a>
+            <a class="btn btn-danger" ng-click="deleteObjective(objective)">Delete</a>
+        </td>
+    </tr>
+</table>

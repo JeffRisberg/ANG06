@@ -1,0 +1,21 @@
+<table class="table objectivetable">
+    <tr>
+        <td><h3>Details for {{objective.name}}</h3></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Episode Title</td>
+        <td>{{objective.title}}</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>{{objective.name}}</td>
+    </tr>
+    <tr>
+        <td>Date Created</td>
+        <td>{{objective.date_created}}</td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="objectives.edit({id:objective.id})">Edit</a>
+</div>

@@ -14,6 +14,11 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav">
+                <li ng-class="{active: stateIncludes('objectives')}">
+                    <a ui-sref="objectives.list">Objectives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
                 <li ng-class="{active: stateIncludes('buttons')}">
                     <a ui-sref="buttons">Buttons</a>
                 </li>

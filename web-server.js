@@ -15,9 +15,11 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 
 var game = require('./routes/game');
 var episode = require('./routes/episode');
+var objective = require('./routes/objective');
 
 app.use('/api', game);
 app.use('/api', episode);
+app.use('/api', objective);
 
 app.listen(port);
 console.log('Now serving the app at http://localhost:' + port + '/');

@@ -80,6 +80,22 @@ angular.module('gameApp.controllers', [])
         }
     })
 
+    .controller('ObjectiveListController', function ($scope, $state, popupService, $window, Objective) {
+        $scope.objectives = Objective.query();
+
+        $scope.deleteObjective = function (objective) {
+            if (popupService.showPopup('Really delete this?')) {
+                objective.$delete(function () {
+                    $window.location.href = '';
+                });
+            }
+        }
+    })
+
+    .controller('ObjectiveViewController', function ($scope, $stateParams, Objective) {
+        $scope.objective = Objective.get({id: $stateParams.id});
+    })
+
     .controller('HeaderController', ['$scope', '$state', function ($scope, $state) {
 
         $scope.stateIncludes = function (name) {

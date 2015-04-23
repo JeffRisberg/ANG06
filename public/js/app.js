@@ -71,6 +71,24 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         controller: 'EpisodeEditController'
     };
 
+    var objectives = {
+        name: 'objectives',
+        url: '/objectives',
+        templateUrl: 'templates/main.html',
+        abstract: true
+    };
+    var objectivesList = {
+        name: 'objectives.list',
+        url: '/',
+        templateUrl: 'templates/objectives.html',
+        controller: 'ObjectiveListController'
+    };
+    var objectivesView = {
+        name: 'objectives.view',
+        url: '/:id/view',
+        templateUrl: 'templates/objective-view.html',
+        controller: 'ObjectiveViewController'
+    };
 
     var buttons = {
         name: 'buttons',
@@ -99,6 +117,10 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     $stateProvider.state(episodesView);
     $stateProvider.state(episodesNew);
     $stateProvider.state(episodesEdit);
+
+    $stateProvider.state(objectives);
+    $stateProvider.state(objectivesList);
+    $stateProvider.state(objectivesView);
 
     $stateProvider.state(buttons);
     $stateProvider.state(tabs);
