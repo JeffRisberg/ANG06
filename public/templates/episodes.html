@@ -1,0 +1,25 @@
+<div>
+    <a ui-sref="episodes.new" class="btn btn-primary nodecoration">Add New Episode</a>
+</div>
+
+<p></p>
+
+<table class="table episodetable">
+    <tr>
+        <th>Title</th>
+        <th style="text-align:right">Seq #</th>
+        <th style="text-align:right">Points</th>
+        <th>Date Created</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr ng-repeat="episode in episodes">
+        <td>{{episode.title}}</td>
+        <td style="text-align:right">{{episode.seq_num}}</td>
+        <td style="text-align:right">{{episode.minScorePoints}}</td>
+        <td>{{episode.date_created}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="episodes.view({id: episode.id})">View</a>
+            <a class="btn btn-danger" ng-click="deleteEpisode(episode)">Delete</a>
+        </td>
+    </tr>
+</table>

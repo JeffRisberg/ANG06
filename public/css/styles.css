@@ -23,3 +23,33 @@ body {
 .nav, .pagination, .carousel, .panel-title a {
     cursor: pointer;
 }
+
+.mainMenu {
+    min-height: 36px;
+    margin-bottom: 0;
+    background: #e6e6e6;
+}
+
+.mainMenu .navbar-nav li {
+    margin-left: 1px;
+    margin-right: 1px;
+    border-top: 5px solid #333;
+    background: #e6e6e6;
+}
+
+.mainMenu .navbar-nav li a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.mainMenu .navbar-nav li.active {
+    border-top: 5px solid #007abe;
+}
+
+.mainMenu .navbar-nav li.active a {
+    background: white;
+}
+
+

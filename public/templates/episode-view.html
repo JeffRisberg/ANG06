@@ -1,0 +1,25 @@
+<table class="table episodetable">
+    <tr>
+        <td><h3>Details for {{episode.title}}</h3></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Episode Title</td>
+        <td>{{episode.title}}</td>
+    </tr>
+    <tr>
+        <td>Sequence #</td>
+        <td>{{episode.seq_num}}</td>
+    </tr>
+    <tr>
+        <td>Min Points</td>
+        <td>{{episode.minScorePoints}}</td>
+    </tr>
+    <tr>
+        <td>Date Created</td>
+        <td>{{episode.date_created}}</td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="episodesEdit({id:episode.id})">Edit</a>
+</div>

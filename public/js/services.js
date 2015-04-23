@@ -7,6 +7,13 @@ angular.module('gameApp.services', [])
             }
         });
     })
+    .factory('Episode', function ($resource) {
+        return $resource('api/episodes/:id', {id: '@id'}, {
+            update: {
+                method: 'PUT'
+            }
+        });
+    })
     .service('popupService', function ($window) {
         this.showPopup = function (message) {
             return $window.confirm(message);

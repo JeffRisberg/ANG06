@@ -25,6 +25,7 @@ angular.module('gameApp.controllers', [])
             });
         }
     })
+
     .controller('GameEditController', function ($scope, $state, $stateParams, Game) {
         $scope.updateGame = function () {
             $scope.game.$update(function () {
@@ -37,12 +38,54 @@ angular.module('gameApp.controllers', [])
         };
 
         $scope.loadGame();
-    });
+    })
 
+    .controller('EpisodeListController', function ($scope, $state, popupService, $window, Episode) {
+        $scope.episodes = Episode.query();
 
-myApp.controller('HomeController', ['$scope', function ($scope) {
-    // nothing here right now
-}]);
+        $scope.deleteEpisode = function (episode) {
+            if (popupService.showPopup('Really delete this?')) {
+                episode.$delete(function () {
+                    $window.location.href = '';
+                });
+            }
+        }
+    })
+
+    .controller('EpisodeViewController', function ($scope, $stateParams, Episode) {
+        $scope.episode = Episode.get({id: $stateParams.id});
+    })
+
+    .controller('EpisodeEditController', function ($scope, $state, $stateParams, Episode) {
+        $scope.updateEpisode = function () {
+            $scope.episode.$update(function () {
+                $state.go('episodes');
+            });
+        };
+
+        $scope.loadEpisode = function () {
+            $scope.episode = Episode.get({id: $stateParams.id});
+        };
+
+        $scope.loadEpisode();
+    })
+
+    .controller('EpisodeCreateController', function ($scope, $state, $stateParams, Episode) {
+        $scope.episode = new Episode();
+
+        $scope.addEpisode = function () {
+            $scope.episode.$save(function () {
+                $state.go('episodes');
+            });
+        }
+    })
+
+    .controller('HeaderController', ['$scope', '$state', function ($scope, $state) {
+
+        $scope.stateIncludes = function (name) {
+            return $state.includes(name);
+        }
+    }]);
 
 myApp.controller('SidebarCtrl', function ($scope, $state) {
     $scope.content = ['buttons', 'tabs', 'accordion'];
@@ -52,7 +95,7 @@ myApp.controller('SidebarCtrl', function ($scope, $state) {
     };
 });
 
-myApp.controller('HeaderController', ['$scope', function ($scope) {
+myApp.controller('XHeaderController', ['$scope', function ($scope) {
     $scope.menuItems = [
         {name: "File"},
         {name: "Edit"}

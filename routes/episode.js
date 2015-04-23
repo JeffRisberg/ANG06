@@ -4,7 +4,10 @@ var DataTypes = require("sequelize");
 var express = require('express');
 
 var Episode = connection.define('episode', {
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    seq_num: DataTypes.INTEGER,
+    minScorePoints: DataTypes.INTEGER,
+    date_created: DataTypes.DATE
 }, {
     freezeTableName: true,
     instanceMethods: {
