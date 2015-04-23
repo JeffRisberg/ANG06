@@ -11,6 +11,9 @@ var Episode = connection.define('episode', {
 }, {
     freezeTableName: true,
     instanceMethods: {
+        retrieveJoin: function (onSuccess, onError) {
+            connection.query("select * from episode left join game on game.id = episode.game_id").then(onSuccess);
+        },
         retrieveAll: function (onSuccess, onError) {
             Episode.findAll({}, {raw: true}).then(onSuccess).catch(onError);
         },
@@ -58,7 +61,9 @@ router.route('/episodes')
     .get(function (req, res) {
         var episode = Episode.build();
 
-        episode.retrieveAll(function (episodes) {
+        episode.retrieveJoin(function (episodes) {
+            console.log(episodes);
+            episodes = episodes[0];
             if (episodes) {
                 res.json(episodes);
             } else {

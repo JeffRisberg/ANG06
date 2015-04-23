@@ -6,6 +6,7 @@
 
 <table class="table episodetable">
     <tr>
+        <th>Game Name</th>
         <th>Title</th>
         <th style="text-align:right">Seq #</th>
         <th style="text-align:right">Points</th>
@@ -13,6 +14,7 @@
         <th>&nbsp;</th>
     </tr>
     <tr ng-repeat="episode in episodes">
+        <td>{{episode.name}}</td>
         <td>{{episode.title}}</td>
         <td style="text-align:right">{{episode.seq_num}}</td>
         <td style="text-align:right">{{episode.minScorePoints}}</td>

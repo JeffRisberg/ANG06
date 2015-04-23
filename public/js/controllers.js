@@ -42,6 +42,7 @@ angular.module('gameApp.controllers', [])
 
     .controller('EpisodeListController', function ($scope, $state, popupService, $window, Episode) {
         $scope.episodes = Episode.query();
+        console.log($scope.episodes);
 
         $scope.deleteEpisode = function (episode) {
             if (popupService.showPopup('Really delete this?')) {
