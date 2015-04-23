@@ -6,7 +6,7 @@ var myApp = angular.module('gameApp', ['ngResource', 'ui.router', 'ui.bootstrap'
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-    // for any unmatched url, redirect to games
+    // For any unmatched url, redirect to games
     $urlRouterProvider.otherwise("/games/");
 
     var games = {
@@ -42,12 +42,13 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
 
     var episodes = {
         name: 'episodes',
+        url: '/episodes',
         templateUrl: 'templates/main.html',
         abstract: true
     };
     var episodesList = {
         name: 'episodes.list',
-        url: '/episodes',
+        url: '/',
         templateUrl: 'templates/episodes.html',
         controller: 'EpisodeListController'
     };

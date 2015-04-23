@@ -11,8 +11,8 @@ var Game = connection.define('game', {
         retrieveAll: function (onSuccess, onError) {
             Game.findAll({}, {raw: true}).then(onSuccess).catch(onError);
         },
-        retrieveById: function (game_id, onSuccess, onError) {
-            Game.find({where: {id: game_id}}, {raw: true}).then(onSuccess).catch(onError);
+        retrieveById: function (gameId, onSuccess, onError) {
+            Game.find({where: {id: gameId}}, {raw: true}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var name = this.name;
@@ -20,14 +20,14 @@ var Game = connection.define('game', {
             Game.build({ name: name })
                 .save().then(onSuccess).catch(onError);
         },
-        updateById: function (game_id, onSuccess, onError) {
-            var id = game_id;
+        updateById: function (gameId, onSuccess, onError) {
+            var id = gameId;
             var name = this.name;
 
             Game.update({ name: name }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
-        removeById: function (game_id, onSuccess, onError) {
-            Game.destroy({where: {id: game_id}}).then(onSuccess).catch(onError);
+        removeById: function (gameId, onSuccess, onError) {
+            Game.destroy({where: {id: gameId}}).then(onSuccess).catch(onError);
         }
     }
 });

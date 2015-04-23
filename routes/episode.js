@@ -17,8 +17,11 @@ var Episode = connection.define('episode', {
         retrieveAll: function (onSuccess, onError) {
             Episode.findAll({}, {raw: true}).then(onSuccess).catch(onError);
         },
-        retrieveById: function (episode_id, onSuccess, onError) {
-            Episode.find({where: {id: episode_id}}, {raw: true}).then(onSuccess).catch(onError);
+        retrieveJoinById: function (episodeId, onSuccess, onError) {
+            connection.query("select * from episode left join game on game.id = episode.game_id where episode.id = " + episodeId).then(onSuccess);
+        },
+        retrieveById: function (episodeId, onSuccess, onError) {
+            Episode.find({where: {id: episodeId}}, {raw: true}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var title = this.title;
@@ -26,14 +29,14 @@ var Episode = connection.define('episode', {
             Episode.build({ title: title })
                 .save().then(onSuccess).catch(onError);
         },
-        updateById: function (episode_id, onSuccess, onError) {
-            var id = episode_id;
+        updateById: function (episodeId, onSuccess, onError) {
+            var id = episodeId;
             var title = this.title;
 
             Episode.update({ title: title }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
-        removeById: function (episode_id, onSuccess, onError) {
-            Episode.destroy({where: {id: episode_id}}).then(onSuccess).catch(onError);
+        removeById: function (episodeId, onSuccess, onError) {
+            Episode.destroy({where: {id: episodeId}}).then(onSuccess).catch(onError);
         }
     }
 });
@@ -62,7 +65,6 @@ router.route('/episodes')
         var episode = Episode.build();
 
         episode.retrieveJoin(function (episodes) {
-            console.log(episodes);
             episodes = episodes[0];
             if (episodes) {
                 res.json(episodes);
@@ -101,8 +103,10 @@ router.route('/episodes/:episode_id')
     .get(function (req, res) {
         var episode = Episode.build();
 
-        episode.retrieveById(req.params.episode_id, function (episodes) {
+        episode.retrieveJoinById(req.params.episode_id, function (episodes) {
+            episodes = episodes[0];
             if (episodes) {
+                episodes = episodes[0];
                 res.json(episodes);
             } else {
                 res.send(401, "Episode not found");
