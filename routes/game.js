@@ -4,7 +4,9 @@ var DataTypes = require("sequelize");
 var express = require('express');
 
 var Game = connection.define('game', {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    active: DataTypes.BOOLEAN,
+    download_price: DataTypes.FLOAT
 }, {
     freezeTableName: true,
     instanceMethods: {
@@ -16,15 +18,19 @@ var Game = connection.define('game', {
         },
         add: function (onSuccess, onError) {
             var name = this.name;
+            var active = this.active;
+            var download_price = this.download_price;
 
-            Game.build({ name: name })
+            Game.build({ name: name, active: active, download_price: download_price })
                 .save().then(onSuccess).catch(onError);
         },
         updateById: function (gameId, onSuccess, onError) {
             var id = gameId;
             var name = this.name;
+            var active = this.active;
+            var download_price = this.download_price;
 
-            Game.update({ name: name }, {where: {id: id} }).then(onSuccess).catch(onError);
+            Game.update({ name: name, active: active, download_price: download_price }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (gameId, onSuccess, onError) {
             Game.destroy({where: {id: gameId}}).then(onSuccess).catch(onError);
@@ -40,8 +46,10 @@ router.route('/games')
     .post(function (req, res) {
 
         var name = req.body.name; //bodyParser does the magic
+        var active = req.body.active;
+        var download_price = req.body.download_price;
 
-        var game = Game.build({ name: name });
+        var game = Game.build({ name: name, active: active, download_price: download_price });
 
         game.add(function (success) {
                 res.json({ message: 'Game created!' });
@@ -76,6 +84,8 @@ router.route('/games/:game_id')
         var game = Game.build();
 
         game.name = req.body.name; //bodyParser does the magic
+        game.active = req.body.active;
+        game.download_price = req.body.download_price;
 
         game.updateById(req.params.game_id, function (success) {
             console.log(success);
