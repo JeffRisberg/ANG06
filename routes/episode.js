@@ -9,25 +9,25 @@ var Episode = connection.define('episode', {
     freezeTableName: true,
     instanceMethods: {
         retrieveAll: function (onSuccess, onError) {
-            Episode.findAll({}, {raw: true}).success(onSuccess).error(onError);
+            Episode.findAll({}, {raw: true}).then(onSuccess).catch(onError);
         },
         retrieveById: function (episode_id, onSuccess, onError) {
-            Episode.find({where: {id: episode_id}}, {raw: true}).success(onSuccess).error(onError);
+            Episode.find({where: {id: episode_id}}, {raw: true}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var title = this.title;
 
             Episode.build({ title: title })
-                .save().success(onSuccess).error(onError);
+                .save().then(onSuccess).catch(onError);
         },
         updateById: function (episode_id, onSuccess, onError) {
             var id = episode_id;
             var title = this.title;
 
-            Episode.update({ title: title }, {where: {id: id} }).success(onSuccess).error(onError);
+            Episode.update({ title: title }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (episode_id, onSuccess, onError) {
-            Episode.destroy({where: {id: episode_id}}).success(onSuccess).error(onError);
+            Episode.destroy({where: {id: episode_id}}).then(onSuccess).catch(onError);
         }
     }
 });

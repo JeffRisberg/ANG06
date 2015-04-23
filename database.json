@@ -1,6 +1,7 @@
 {
     "dev": {
         "driver": "mysql",
+        "host": "aws-lab-01.ctdefwl0ev9y.us-west-2.rds.amazonaws.com",
         "database": "sp05",
         "user": "developer",
         "password": "123456"
@@ -8,6 +9,7 @@
 
     "production": {
         "driver": "mysql",
+        "host": "aws-lab-01.ctdefwl0ev9y.us-west-2.rds.amazonaws.com",
         "database": "sp05",
         "user": "developer",
         "password": "123456"

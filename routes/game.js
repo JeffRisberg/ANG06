@@ -9,25 +9,25 @@ var Game = connection.define('game', {
     freezeTableName: true,
     instanceMethods: {
         retrieveAll: function (onSuccess, onError) {
-            Game.findAll({}, {raw: true}).success(onSuccess).error(onError);
+            Game.findAll({}, {raw: true}).then(onSuccess).catch(onError);
         },
         retrieveById: function (game_id, onSuccess, onError) {
-            Game.find({where: {id: game_id}}, {raw: true}).success(onSuccess).error(onError);
+            Game.find({where: {id: game_id}}, {raw: true}).then(onSuccess).catch(onError);
         },
         add: function (onSuccess, onError) {
             var name = this.name;
 
             Game.build({ name: name })
-                .save().success(onSuccess).error(onError);
+                .save().then(onSuccess).catch(onError);
         },
         updateById: function (game_id, onSuccess, onError) {
             var id = game_id;
             var name = this.name;
 
-            Game.update({ name: name }, {where: {id: id} }).success(onSuccess).error(onError);
+            Game.update({ name: name }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (game_id, onSuccess, onError) {
-            Game.destroy({where: {id: game_id}}).success(onSuccess).error(onError);
+            Game.destroy({where: {id: game_id}}).then(onSuccess).catch(onError);
         }
     }
 });
