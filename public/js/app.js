@@ -90,6 +90,17 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         controller: 'ObjectiveViewController'
     };
 
+    var editFilters = {
+        name: 'editFilters',
+        url: '/editFilters',
+        templateUrl: 'templates/editFilters.html'
+    };
+    var editColumns = {
+        name: 'editColumns',
+        url: '/edtColumns',
+        templateUrl: 'templates/editColumns.html'
+    };
+
     var buttons = {
         name: 'buttons',
         url: '/buttons',
@@ -121,6 +132,9 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     $stateProvider.state(objectives);
     $stateProvider.state(objectivesList);
     $stateProvider.state(objectivesView);
+
+    $stateProvider.state(editFilters);
+    $stateProvider.state(editColumns);
 
     $stateProvider.state(buttons);
     $stateProvider.state(tabs);
