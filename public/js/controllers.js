@@ -1,9 +1,42 @@
 angular.module('gameApp.controllers', [])
 
-    .controller('GameListController', function ($scope, $state, popupService, $window, Game) {
-        $scope.games = Game.query();
+    .controller('GameListController', function ($scope, $state, $interpolate, $compile, popupService, $window, Game) {
+
+        $scope.gameCollection = new wijmo.collections.CollectionView([]);
+        $scope.gameCollection.pageSize = 10;
+
+        $scope.gameColumnLayout = [
+            {header: "Id", binding: "id"},
+            {header: "Name", binding: "name"},
+            {header: "Download Price", binding: "download_price"},
+            {header: "", width: 200}
+        ];
+
+        $scope.gameItemFormatter = function (panel, r, c, cell) {
+            if (panel.cellType == wijmo.grid.CellType.Cell) {
+                var flex = panel.grid;
+
+                if (c == 3) {
+                    $scope.$item = panel.rows[r].dataItem;
+
+                    var template =
+                        '<a class="btn btn-primary" ui-sref="games.view({id: {{$item.id}}})">View</a>' +
+                        '<a class="btn btn-danger" ng-click="deleteGame($item)">Delete</a>';
+                    var innerHTML = $interpolate(template)($scope);
+
+                    cell.innerHTML = innerHTML;
+
+                    $compile(cell)($scope);
+                }
+            }
+        };
+
+        var gamesData = Game.query(function () {
+            $scope.gameCollection.sourceCollection = gamesData;
+        });
 
         $scope.deleteGame = function (game) {
+            console.log(game);
             if (popupService.showPopup('Really delete this?')) {
                 game.$delete(function () {
                     $window.location.href = '';
@@ -44,6 +77,7 @@ angular.module('gameApp.controllers', [])
         $scope.episodes = Episode.query();
 
         $scope.deleteEpisode = function (episode) {
+            console.log(episode);
             if (popupService.showPopup('Really delete this?')) {
                 episode.$delete(function () {
                     $window.location.href = '';
