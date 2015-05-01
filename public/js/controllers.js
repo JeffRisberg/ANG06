@@ -8,7 +8,9 @@ angular.module('gameApp.controllers', [])
         $scope.gameColumnLayout = [
             {header: "Id", binding: "id"},
             {header: "Name", binding: "name"},
-            {header: "Download Price", binding: "download_price"},
+            {header: "Active", binding: "active"},
+            {header: "Download Price", binding: "download_price", width: 200},
+            {header: "Date Created", binding: "date_created", width: 200},
             {header: "", width: 200}
         ];
 
@@ -16,7 +18,7 @@ angular.module('gameApp.controllers', [])
             if (panel.cellType == wijmo.grid.CellType.Cell) {
                 var flex = panel.grid;
 
-                if (c == 3) {
+                if (c == 5) {
                     $scope.$item = panel.rows[r].dataItem;
 
                     var template =
@@ -51,6 +53,7 @@ angular.module('gameApp.controllers', [])
 
     .controller('GameCreateController', function ($scope, $state, $stateParams, Game) {
         $scope.game = new Game();
+        $scope.game.active = true;
 
         $scope.addGame = function () {
             $scope.game.$save(function () {

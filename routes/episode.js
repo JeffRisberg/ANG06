@@ -7,7 +7,8 @@ var Episode = connection.define('episode', {
     title: DataTypes.STRING,
     seq_num: DataTypes.INTEGER,
     minScorePoints: DataTypes.INTEGER,
-    date_created: DataTypes.DATE
+    date_created: DataTypes.DATE,
+    last_updated: DataTypes.DATE
 }, {
     freezeTableName: true,
     instanceMethods: {
@@ -26,14 +27,19 @@ var Episode = connection.define('episode', {
         add: function (onSuccess, onError) {
             var title = this.title;
 
-            Episode.build({ title: title })
+            var date_created = new Date();
+            var last_updated = new Date();
+
+            Episode.build({ title: title, date_created: date_created, last_updated: last_updated })
                 .save().then(onSuccess).catch(onError);
         },
         updateById: function (episodeId, onSuccess, onError) {
             var id = episodeId;
             var title = this.title;
 
-            Episode.update({ title: title }, {where: {id: id} }).then(onSuccess).catch(onError);
+            var last_updated = new Date();
+
+            Episode.update({ title: title, last_updated: last_updated }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (episodeId, onSuccess, onError) {
             Episode.destroy({where: {id: episodeId}}).then(onSuccess).catch(onError);

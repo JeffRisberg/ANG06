@@ -6,7 +6,9 @@ var express = require('express');
 var Game = connection.define('game', {
     name: DataTypes.STRING,
     active: DataTypes.BOOLEAN,
-    download_price: DataTypes.FLOAT
+    download_price: DataTypes.FLOAT,
+    date_created: DataTypes.DATE,
+    last_updated: DataTypes.DATE
 }, {
     freezeTableName: true,
     instanceMethods: {
@@ -20,8 +22,11 @@ var Game = connection.define('game', {
             var name = this.name;
             var active = this.active;
             var download_price = this.download_price;
+            var date_created = new Date();
+            var last_updated = new Date();
 
-            Game.build({ name: name, active: active, download_price: download_price })
+            Game.build({ name: name, active: active, download_price: download_price,
+                date_created: date_created, last_updated: last_updated })
                 .save().then(onSuccess).catch(onError);
         },
         updateById: function (gameId, onSuccess, onError) {
@@ -29,8 +34,9 @@ var Game = connection.define('game', {
             var name = this.name;
             var active = this.active;
             var download_price = this.download_price;
+            var last_updated = new Date();
 
-            Game.update({ name: name, active: active, download_price: download_price }, {where: {id: id} }).then(onSuccess).catch(onError);
+            Game.update({ name: name, active: active, download_price: download_price, last_updated: last_updated }, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (gameId, onSuccess, onError) {
             Game.destroy({where: {id: gameId}}).then(onSuccess).catch(onError);

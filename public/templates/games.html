@@ -23,21 +23,3 @@
             selection-mode="None"
             headers-visibility="Column">
 </ang06-grid>
-
-<table class="table gametable">
-    <tr>
-        <th>Name</th>
-        <th>Active</th>
-        <th style="text-align:right">Download Price</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr ng-repeat="game in games">
-        <td>{{game.name}}</td>
-        <td>{{game.active}}</td>
-        <td style="text-align:right">{{game.download_price}}</td>
-        <td>
-            <a class="btn btn-primary" ui-sref="games.view({id: game.id})">View</a>
-            <a class="btn btn-danger" ng-click="deleteGame(game)">Delete</a>
-        </td>
-    </tr>
-</table>

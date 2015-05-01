@@ -4,7 +4,10 @@ var DataTypes = require("sequelize");
 var express = require('express');
 
 var Objective = connection.define('objective', {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    min_score_points: DataTypes.INTEGER,
+    date_created: DataTypes.DATE,
+    last_updated: DataTypes.DATE
 }, {
     freezeTableName: true,
     instanceMethods: {
@@ -23,14 +26,19 @@ var Objective = connection.define('objective', {
         add: function (onSuccess, onError) {
             var title = this.title;
 
-            Objective.build({ title: title })
+            var date_created = new Date();
+            var last_updated = new Date();
+
+            Objective.build({ title: title, date_created: date_created, last_updated: last_updated })
                 .save().then(onSuccess).catch(onError);
         },
         updateById: function (objectiveId, onSuccess, onError) {
             var id = objectiveId;
             var title = this.title;
 
-            Objective.update({ title: title }, {where: {id: id} }).then(onSuccess).catch(onError);
+            var last_updated = new Date();
+
+            Objective.update({ title: title, last_updated: last_updated}, {where: {id: id} }).then(onSuccess).catch(onError);
         },
         removeById: function (objectiveId, onSuccess, onError) {
             Objective.destroy({where: {id: objectiveId}}).then(onSuccess).catch(onError);
