@@ -15,8 +15,10 @@
 
 <div ng-controller="SelectsDemoCtrl">
 
-    <h3>Example using Countries</h3>
+    <h3>Example using Countries (Bootstrap theme)</h3>
+
     <p>Selected: {{country.selected}}</p>
+
     <ui-select ng-model="country.selected" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
         <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
         <ui-select-choices repeat="country in countries | filter: $select.search">
@@ -25,10 +27,11 @@
         </ui-select-choices>
     </ui-select>
 
-    <h3>Example using People</h3>
+    <h3>Example using People (Bootstrap theme)</h3>
 
     <p>Selected: {{person.selected}}</p>
-    <ui-select ng-model="person.selected" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+
+    <ui-select ng-model="person.selected" theme="bootstrap" ng-disabled="disabled" style="width: 400px;">
         <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}
         </ui-select-match>
         <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
