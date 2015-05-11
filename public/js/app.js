@@ -2,7 +2,7 @@
  * Application is called 'gameApp'
  */
 
-var myApp = angular.module('gameApp', ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.select', 'wj', 'gameApp.controllers', 'gameApp.services']);
+var myApp = angular.module('gameApp', ['ngSanitize', 'ngResource', 'ui.utils', 'ui.router', 'ui.bootstrap', 'ui.select', 'wj', 'gameApp.controllers', 'gameApp.services']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -195,12 +195,12 @@ myApp.directive('ang06Grid', [function () {
     }
 }]);
 
-myApp.filter('propsFilter', function() {
-    return function(items, props) {
+myApp.filter('propsFilter', function () {
+    return function (items, props) {
         var out = [];
 
         if (angular.isArray(items)) {
-            items.forEach(function(item) {
+            items.forEach(function (item) {
                 var itemMatches = false;
 
                 var keys = Object.keys(props);
