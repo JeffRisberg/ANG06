@@ -140,20 +140,6 @@ angular.module('gameApp.controllers', [])
         }
     }]);
 
-myApp.controller('SidebarCtrl', function ($scope, $state) {
-    $scope.content = ['buttons', 'tabs', 'accordion'];
-
-    $scope.setPage = function (page) {
-        $state.transitionTo(page);
-    };
-});
-
-myApp.controller('XHeaderController', ['$scope', function ($scope) {
-    $scope.menuItems = [
-        {name: "File"},
-        {name: "Edit"}
-    ];
-}]);
 
 myApp.controller('ButtonsCtrl', function ($scope) {
     $scope.singleModel = 1;
@@ -169,8 +155,8 @@ myApp.controller('ButtonsCtrl', function ($scope) {
 
 myApp.controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [
-        { title: 'Dynamic Title 1', content: 'Dynamic content 1' },
-        { title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true }
+        {title: 'Dynamic Title 1', content: 'Dynamic content 1'},
+        {title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true}
     ];
 
     $scope.alertMe = function () {
@@ -205,4 +191,14 @@ myApp.controller('AccordionDemoCtrl', function ($scope) {
         isFirstOpen: true,
         isFirstDisabled: false
     };
+});
+
+myApp.controller('SelectsDemoCtrl', function ($scope) {
+
+    $scope.addresses = [
+        ["One", "OneDetail"],
+        ["Two", "TwoDetail"],
+        ["Three", "ThreeDetail"]
+    ];
+    $scope.address = null;
 });

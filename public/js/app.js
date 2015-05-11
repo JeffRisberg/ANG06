@@ -2,7 +2,7 @@
  * Application is called 'gameApp'
  */
 
-var myApp = angular.module('gameApp', ['ngResource', 'ui.router', 'ui.bootstrap', 'wj', 'gameApp.controllers', 'gameApp.services']);
+var myApp = angular.module('gameApp', ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.select', 'wj', 'gameApp.controllers', 'gameApp.services']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -116,6 +116,11 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         url: '/accordions',
         templateUrl: 'templates/accordions.html'
     };
+    var selects = {
+        name: 'selects',
+        url: '/selects',
+        templateUrl: 'templates/selects.html'
+    };
 
     $stateProvider.state(games);
     $stateProvider.state(gamesList);
@@ -139,6 +144,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     $stateProvider.state(buttons);
     $stateProvider.state(tabs);
     $stateProvider.state(accordions);
+    $stateProvider.state(selects);
 }]);
 
 myApp.directive('ang06Grid', [function () {
