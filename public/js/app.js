@@ -131,6 +131,11 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         url: '/selects',
         templateUrl: 'templates/selects.html'
     };
+    var dragAndDrop = {
+        name: 'dragAndDrop',
+        url: '/dragAndDrop',
+        templateUrl: 'templates/dragAndDrop.html'
+    };
 
     $stateProvider.state(games);
     $stateProvider.state(gamesList);
@@ -155,6 +160,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     $stateProvider.state(tabs);
     $stateProvider.state(accordions);
     $stateProvider.state(selects);
+    $stateProvider.state(dragAndDrop);
 }]);
 
 myApp.directive('ang06Grid', [function () {
