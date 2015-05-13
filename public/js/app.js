@@ -2,7 +2,17 @@
  * Application is called 'gameApp'
  */
 
-var myApp = angular.module('gameApp', ['ngSanitize', 'ngResource', 'ui.utils', 'ui.router', 'ui.bootstrap', 'ui.select', 'wj', 'gameApp.controllers', 'gameApp.services']);
+var myApp = angular.module('gameApp', [
+    'ngSanitize',
+    'ngResource',
+    'ui.utils',
+    'ui.select',
+    'ui.bootstrap',
+    'ui.router',
+    'dndLists',
+    'wj',
+    'gameApp.controllers',
+    'gameApp.services']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
