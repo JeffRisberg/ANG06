@@ -195,33 +195,17 @@ myApp.controller('AccordionDemoCtrl', function ($scope) {
 
 myApp.controller('SelectsDemoCtrl', function ($scope) {
 
-    $scope.models = {
-        selected: null,
-        lists: {"A": [], "B": []}
-    };
-
-    // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.A.push({label: "Item A" + i});
-        $scope.models.lists.B.push({label: "Item B" + i});
-    }
-
-    // Model to JSON for demo purpose
-    $scope.$watch('models', function(model) {
-        $scope.modelAsJson = angular.toJson(model, true);
-    }, true);
-
     $scope.disabled = undefined;
 
-    $scope.enable = function() {
+    $scope.enable = function () {
         $scope.disabled = false;
     };
 
-    $scope.disable = function() {
+    $scope.disable = function () {
         $scope.disabled = true;
     };
 
-    $scope.clear = function() {
+    $scope.clear = function () {
         $scope.person.selected = undefined;
         $scope.address.selected = undefined;
         $scope.country.selected = undefined;
@@ -229,20 +213,20 @@ myApp.controller('SelectsDemoCtrl', function ($scope) {
 
     $scope.person = {};
     $scope.people = [
-        { name: 'Adam',      email: 'adam@email.com',      age: 10 },
-        { name: 'Amalie',    email: 'amalie@email.com',    age: 12 },
-        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30 },
-        { name: 'Samantha',  email: 'samantha@email.com',  age: 31 },
-        { name: 'Estefanía', email: 'estefanía@email.com', age: 16 },
-        { name: 'Natasha',   email: 'natasha@email.com',   age: 54 },
-        { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
-        { name: 'Adrian',    email: 'adrian@email.com',    age: 21 }
+        {name: 'Adam', email: 'adam@email.com', age: 10},
+        {name: 'Amalie', email: 'amalie@email.com', age: 12},
+        {name: 'Wladimir', email: 'wladimir@email.com', age: 30},
+        {name: 'Samantha', email: 'samantha@email.com', age: 31},
+        {name: 'Estefanï¿½a', email: 'estefanï¿½a@email.com', age: 16},
+        {name: 'Natasha', email: 'natasha@email.com', age: 54},
+        {name: 'Nicole', email: 'nicole@email.com', age: 43},
+        {name: 'Adrian', email: 'adrian@email.com', age: 21}
     ];
 
     $scope.country = {};
     $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
         {name: 'Afghanistan', code: 'AF'},
-        {name: 'Åland Islands', code: 'AX'},
+        {name: 'Aland Islands', code: 'AX'},
         {name: 'Albania', code: 'AL'},
         {name: 'Algeria', code: 'DZ'},
         {name: 'American Samoa', code: 'AS'},
@@ -485,4 +469,24 @@ myApp.controller('SelectsDemoCtrl', function ($scope) {
         {name: 'Zambia', code: 'ZM'},
         {name: 'Zimbabwe', code: 'ZW'}
     ];
+});
+
+myApp.controller('DragAndDropDemoCtrl', function ($scope) {
+    $scope.models = {
+        selected: null,
+        lists: {"A": [], "B": []}
+    };
+
+    // Generate initial model
+    for (var i = 1; i <= 3; ++i) {
+        $scope.models.lists.A.push({label: "Item A" + i});
+        $scope.models.lists.B.push({label: "Item B" + i});
+    }
+
+    console.log($scope.models.lists.A);
+
+    // Model to JSON for demo purpose
+    $scope.$watch('models', function (model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
 });
