@@ -7,6 +7,11 @@
 	border-radius: 4px;
 	background-color: #fff;
 	outline: none;
+	box-sizing: border-box;
+}
+
+.wj-control {
+	outline: none;
 }
 
 .wj-header {
@@ -37,12 +42,7 @@
 	/* HTML disabled controls */
 	background-color: #eeeeee;
 	opacity: .5;
-	cursor: not-allowed;
 }
-
-	.wj-control[disabled] * {
-		cursor: not-allowed;
-	}
 
 /* Button Styles */
 
@@ -139,10 +139,10 @@ button, html input[type=button], input[type=reset], input[type=submit] {
 		background-color: rgba(0,0,0,.05);
 	}
 
-	.wj-listbox .wj-listbox-item label {
-		font-weight: normal;
-		margin: 0px;
-	}
+.wj-listbox .wj-listbox-item label {
+	font-weight: normal;
+	margin: 0px;
+}
 
 .wj-dropdown .wj-listbox {
 	padding: 0;
@@ -214,6 +214,7 @@ button, input, optgroup, select, textarea {
 		position: relative;
 		float: left;
 		padding: 4px 8px;
+		vertical-align: middle;
 		width: 100%;
 		height: 100%;
 		border: none;
@@ -388,10 +389,10 @@ button, input, optgroup, select, textarea {
 	border-bottom: 1px solid #c6c6c6;
 }
 
-.wj-cell.wj-state-selected .wj-control, .wj-cell.wj-state-multi-selected .wj-control {
-	/* Text color for nested controls in a selected row */
-	color: #444;
-}
+	.wj-cell.wj-state-selected .wj-control, .wj-cell.wj-state-multi-selected .wj-control {
+		/* Text color for nested controls in a selected row */
+		color: #444;
+	}
 
 [dir="rtl"] .wj-cell {
 	border-left: 1px solid #c6c6c6;
@@ -421,16 +422,16 @@ button, input, optgroup, select, textarea {
 }
 
 .wj-frozen-row {
-    border-bottom: 1px solid #666;
+	border-bottom: 1px solid #666;
 }
 
 .wj-frozen-col {
-    border-right: 1px solid #666;
+	border-right: 1px solid #666;
 }
 
 [dir="rtl"] .wj-frozen-col {
-    border-left: 1px solid #666;
-    border-right: none;
+	border-left: 1px solid #666;
+	border-right: none;
 }
 
 .wj-flexgrid .wj-group {
@@ -548,12 +549,12 @@ button, input, optgroup, select, textarea {
 		fill: #666;
 	}
 
-  	.wj-flexchart .wj-data-label {
+	.wj-flexchart .wj-data-label {
 		fill: #666;
 	}
 
-    .wj-flexchart .wj-data-label-border {
-        stroke: rgba(128, 128, 128, 0.5);
+	.wj-flexchart .wj-data-label-border {
+		stroke: rgba(128, 128, 128, 0.5);
 	}
 
 	.wj-flexchart .wj-axis-x .wj-title,
@@ -610,14 +611,14 @@ button, input, optgroup, select, textarea {
 		stroke-width: 0.25;
 	}
 
-    /* minor tick */
-  	.wj-flexchart .wj-axis-x .wj-tick-minor {
+	/* minor tick */
+	.wj-flexchart .wj-axis-x .wj-tick-minor {
 		stroke: #aaa;
 		stroke-width: 1;
 	}
 
-    /* minor grid line */
-  	.wj-flexchart .wj-axis-x .wj-gridline-minor {
+	/* minor grid line */
+	.wj-flexchart .wj-axis-x .wj-gridline-minor {
 		stroke: black;
 		stroke-dasharray: 6;
 		stroke-width: 0.25;
@@ -644,74 +645,83 @@ button, input, optgroup, select, textarea {
 		stroke-width: 0.25;
 	}
 
-    /* minor tick */
-  	.wj-flexchart .wj-axis-y .wj-tick-minor {
+	/* minor tick */
+	.wj-flexchart .wj-axis-y .wj-tick-minor {
 		stroke: #aaa;
 		stroke-width: 1;
 	}
 
 	/* minor grid line */
-  	.wj-flexchart .wj-axis-y .wj-gridline-minor {
+	.wj-flexchart .wj-axis-y .wj-gridline-minor {
 		stroke: black;
-        stroke-dasharray: 6;
+		stroke-dasharray: 6;
 		stroke-width: 0.25;
 	}
-     
-/* range selector */     
+
+/* range selector */
 .wj-flexchart .wj-rangeselector {
-   visibility: hidden;
-   position: relative;
-}     
+	visibility: hidden;
+	position: relative;
+}
 
-.wj-flexchart .wj-rangeselector .wj-scroller {     
-   border: 2px solid Gray;     
-   position: absolute;     
-   display: block;     
-   background-color: whitesmoke;
-   opacity: 0.6;
+	.wj-flexchart .wj-rangeselector .wj-scroller {
+		border: 2px solid Gray;
+		position: absolute;
+		display: block;
+		background-color: whitesmoke;
+		opacity: 0.6;
 		border-radius: 0.5em;
-   touch-action: none;
-}
+		touch-action: none;
+	}
 
-.wj-flexchart .wj-rangeselector .wj-hscroller {     
-    width: 20px;                   
-}
+	.wj-flexchart .wj-rangeselector .wj-hscroller {
+		width: 20px;
+	}
 
-.wj-flexchart .wj-rangeselector .wj-vscroller {     
-    height: 20px;                
-}
+	.wj-flexchart .wj-rangeselector .wj-vscroller {
+		height: 20px;
+	}
 
-.wj-flexchart .wj-rangeselector .wj-scroller-center {     
-   background: rgba(128, 128, 128, 0.1);     
-   position: absolute;     
-   display: block; 
-   touch-action: none;
-}
+	.wj-flexchart .wj-rangeselector .wj-scroller-center {
+		background: rgba(128, 128, 128, 0.1);
+		position: absolute;
+		display: block;
+		touch-action: none;
+	}
 
 /* chart marker */
 
-.wj-flexchart .wj-chart-linemarker {     
-   background: rgba(128, 128, 128, 0.3);     
-   position: absolute;     
+.wj-flexchart .wj-chart-linemarker {
+	background: rgba(128, 128, 128, 0.3);
+	position: absolute;
+	padding: 2px;
 }
 
 .wj-flexchart .wj-chart-linemarker-container {
 	position: relative;
 }
 
-.wj-flexchart .wj-chart-linemarker .wj-chart-linemarker-hline {     
-    height: 2px;
-    background: rgba(128, 128, 128, 1);
-    touch-action: none;
+.wj-flexchart .wj-chart-linemarker .wj-chart-linemarker-hline {
+	height: 2px;
+	background: rgba(128, 128, 128, 1);
+	touch-action: none;
 	position: absolute;
 }
 
-.wj-flexchart .wj-chart-linemarker .wj-chart-linemarker-vline {     
-    width: 2px;   
-    background: rgba(128, 128, 128, 1);   
-    touch-action: none;
+.wj-flexchart .wj-chart-linemarker .wj-chart-linemarker-vline {
+	width: 2px;
+	background: rgba(128, 128, 128, 1);
+	touch-action: none;
 	position: absolute;
 }
+
+.wj-flexchart.wj-chart-linemarker-draggable,
+.wj-flexchart .wj-chart-linemarker .wj-chart-linemarker-draggable {
+	-moz-user-select: none;
+	-khtml-user-drag: element;
+	cursor: move;
+}
+
 /* Gauges */
 
 .wj-gauge {
@@ -755,37 +765,7 @@ button, input, optgroup, select, textarea {
 }
 
 .wj-colorbox {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-/* TreeView*/
-
-/*.wj-treeview-path {
-    height: 1em;
-}*/
-
-.wj-treenode {
-    display: block;
-}
-
-.wj-treenode .wj-treenode {
-    margin-left: 2em;
-}
-
-.wj-treenode-label {
-    cursor: pointer;
-    margin: 0.5em;
-}
-
-/* CheckBox */
-.wj-checkbox {
-    font-weight: bold;
-    text-align: center;
-    line-height: 1em;
-    width: 1em;
-    height: 1em;
-    border: 1px solid gray;
-    cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 /* Glyphs */
@@ -907,17 +887,41 @@ button, input, optgroup, select, textarea {
 	opacity: 0.75;
 	cursor: pointer;
 }
-.wj-glyph-filter:after {
-	position: absolute;
-	    box-sizing: border-box;
-	border: .12em solid;
-	width: .12em;
-	height: .4em;
-	transform: translateX(-50%);
-	top: -.2em;
-	content: "";
+
+	.wj-glyph-filter:after {
+		position: absolute;
+		box-sizing: border-box;
+		border: .12em solid;
+		width: .12em;
+		height: .4em;
+		transform: translateX(-50%);
+		top: -.2em;
+		content: "";
+	}
+
+[dir="rtl"] .wj-glyph-filter:after {
+	transform: translateX(50%);
 }
-    [dir="rtl"] .wj-glyph-filter:after {
-	    transform: translateX(50%);
-    }
+
+.wj-glyph-plus, .wj-glyph-minus {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	border-top: .25em solid;
+	width: .9em;
+	top: -.2em;
+	opacity: 0.75;
+	cursor: pointer;
+}
+
+	.wj-glyph-plus:after {
+		position: absolute;
+		box-sizing: border-box;
+		border-left: .25em solid;
+		width: .25em;
+		height: .85em;
+		left: .32em;
+		top: -.55em;
+		content: "";
+	}
 
